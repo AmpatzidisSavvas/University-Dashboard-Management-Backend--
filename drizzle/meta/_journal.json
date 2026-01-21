@@ -8,6 +8,13 @@
       "when": 1768551259517,
       "tag": "0000_late_moonstone",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1768978140162,
+      "tag": "0001_square_golden_guardian",
+      "breakpoints": true
     }
   ]
 }
