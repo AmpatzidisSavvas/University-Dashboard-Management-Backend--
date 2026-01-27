@@ -36,7 +36,7 @@ subjectRouter.get("/", async (req, res) => {
     const countResult = await db
       .select({ count: sql<number>`count(*)` })
       .from(subjects)
-      .leftJoin(departments, eq(subjects.deparmentId, departments.id))
+      .leftJoin(departments, eq(subjects.departmentId, departments.id))
       .where(whereClause);
 
     const totalCount = countResult[0]?.count ?? 0;
@@ -50,9 +50,9 @@ subjectRouter.get("/", async (req, res) => {
         },
       })
       .from(subjects)
-      .leftJoin(departments, eq(subjects.deparmentId, departments.id))
+      .leftJoin(departments, eq(subjects.departmentId, departments.id))
       .where(whereClause)
-      .orderBy(desc(subjects.createAt))
+      .orderBy(desc(subjects.createdAt))
       .limit(limitPerPage)
       .offset(offset);
 
