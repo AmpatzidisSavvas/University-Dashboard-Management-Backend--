@@ -4,6 +4,8 @@ import cors from 'cors'
 import securityMiddleware from './middleware/security';
 import { toNodeHandler } from "better-auth/node"
 import { auth } from './lib/auth';
+import usersRouter from './routes/users';
+import classesRouter from './routes/classes';
 
 const app = express();
 const PORT = 8000;
@@ -18,13 +20,15 @@ app.use(cors({
     credentials: true 
 }));
 
-app.all('/api/auth/{*splat}', toNodeHandler(auth));
+app.all('/api/auth/*splat', toNodeHandler(auth));
 
 app.use(express.json());
 
 app.use(securityMiddleware);
 
 app.use('/api/subjects', subjectRouter)
+app.use('/api/users', usersRouter)
+app.use('/api/classes', classesRouter)
 
 app.get('/', (req, res) => {
     res.send('Classroom API');
